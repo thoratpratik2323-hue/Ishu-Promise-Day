@@ -2,16 +2,16 @@
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    /* Changed from center to allow scroll */
     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
     font-family: 'Montserrat', sans-serif;
     color: white;
     overflow-x: hidden;
     overflow-y: auto;
-    /* Allow scrolling */
     position: relative;
     user-select: none;
 }
