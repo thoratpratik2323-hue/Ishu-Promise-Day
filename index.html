@@ -69,23 +69,45 @@
             <button id="nextBtn" class="nav-btn">❯</button>
         </div>
 
+        <!-- Love Contract Section -->
+        <div class="contract-container">
+            <div class="contract-paper">
+                <h2>📜 Love Agreement 📜</h2>
+                <ul class="contract-list">
+                    <li>1. I promise to always pick up your video calls (or call back ASAP!). 📞</li>
+                    <li>2. I promise to never let us go to sleep angry. 😴❌</li>
+                    <li>3. I promise to share all my secrets (and gossip) with you. 🤫</li>
+                    <li>4. I promise to love you even when you are hangry. 🍔</li>
+                    <li>5. I promise that You are my Priority #1. Always. 🏆</li>
+                </ul>
+                <p class="contract-footer">By scanning below, I officially sign this contract forever.</p>
+            </div>
+        </div>
+
         <!-- Fingerprint Scanner Section -->
         <div class="scanner-container">
-            <p class="scan-instruction">Long Press to Seal Our Promise 🔒</p>
+            <p class="scan-instruction">Long Press to Sign & Seal Promise 🔒</p>
             <div class="fingerprint" id="fingerprintBtn">
                 <div class="fingerprint-pattern"></div>
                 <div class="scan-beam"></div>
             </div>
-            <p class="scan-status" id="scanStatus">Waiting for finger...</p>
+            <p class="scan-status" id="scanStatus">Waiting for finger to sign...</p>
         </div>
 
         <div id="finalMessage" class="hidden">
-            <h2>Promise Sealed Forever! 💖</h2>
-            <p>Biometric Verified: Ishu + Pratik</p>
+            <h2>Contract Signed! ✍️💖</h2>
+            <p>Official Partners: Ishu & Pratik</p>
             <p>Status: Locked for Eternity 🔒</p>
             <p>Happy Promise Day, Baby!</p>
         </div>
 
+    </div>
+
+    <!-- Virtual Hug Button -->
+    <button id="hugBtn" class="floating-hug">🤗 Send Hug</button>
+    <div id="hugOverlay" class="hidden">
+        <div class="hug-emoji">🤗</div>
+        <p>Sending Warm Hug...</p>
     </div>
 
     <script src="script.js"></script>

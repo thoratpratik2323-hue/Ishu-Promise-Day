@@ -247,4 +247,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // --- Virtual Hug Logic ---
+    const hugBtn = document.getElementById('hugBtn');
+    const hugOverlay = document.getElementById('hugOverlay');
+
+    hugBtn.addEventListener('click', () => {
+        // Show Overlay
+        hugOverlay.classList.remove('hidden');
+        hugOverlay.style.display = 'flex';
+
+        // Vibrate Phone (if supported)
+        if (navigator.vibrate) {
+            navigator.vibrate([200, 100, 200, 100, 500]); // Pattern: Buzz-pause-buzz-pause-longbuzz
+        }
+
+        // Hide after 3 seconds
+        setTimeout(() => {
+            hugOverlay.classList.add('hidden');
+            hugOverlay.style.display = 'none';
+        }, 3000);
+    });
+
 });

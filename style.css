@@ -353,6 +353,67 @@ body {
     color: #000;
 }
 
+/* Love Contract */
+.contract-container {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+    background: #fff;
+    color: #333;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background-image: repeating-linear-gradient(#fff 0px, #fff 24px, #e1f5fe 25px);
+    position: relative;
+    transform: rotate(-2deg);
+    border: 1px solid #ddd;
+}
+
+.contract-container:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: -1;
+    transform: rotate(3deg);
+    border-radius: 5px;
+}
+
+.contract-paper h2 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #d32f2f;
+    text-decoration: underline;
+}
+
+.contract-list {
+    text-align: left;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 20px;
+}
+
+.contract-list li {
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.5;
+    border-bottom: 1px dashed #ddd;
+    padding-bottom: 5px;
+}
+
+.contract-footer {
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 20px;
+    font-style: italic;
+}
+
+
 /* Fingerprint Scanner */
 .scanner-container {
     text-align: center;
@@ -398,7 +459,6 @@ body {
     opacity: 0.5;
     mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="30" ry="30" fill="black"/></svg>');
     /* Simple mask */
-    /* Let's use a simpler visual for fingerprint without external SVG for reliability */
     background: none;
     border: 2px dashed #ffab91;
     border-radius: 50%;
@@ -533,4 +593,74 @@ body {
     border-color: #69f0ae;
     color: #69f0ae;
     box-shadow: 0 0 10px rgba(105, 240, 174, 0.3);
+}
+
+/* Virtual Hug Button and Overlay */
+.floating-hug {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #ff4081;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+    z-index: 200;
+    transition: transform 0.2s;
+    animation: hugPulse 2s infinite;
+}
+
+.floating-hug:hover {
+    transform: scale(1.1);
+}
+
+@keyframes hugPulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 64, 129, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 64, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 64, 129, 0);
+    }
+}
+
+#hugOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 64, 129, 0.3);
+    backdrop-filter: blur(5px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    color: white;
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+.hug-emoji {
+    font-size: 8rem;
+    animation: hugAnim 1s ease-in-out infinite alternate;
+}
+
+@keyframes hugAnim {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.3) rotate(10deg);
+    }
 }
