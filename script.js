@@ -261,10 +261,16 @@ document.addEventListener('DOMContentLoaded', () => {
             navigator.vibrate([200, 100, 200, 100, 500]); // Pattern: Buzz-pause-buzz-pause-longbuzz
         }
 
-        // Hide after 3 seconds
+        // Hide after 3 seconds & scroll to contract
         setTimeout(() => {
             hugOverlay.classList.add('hidden');
             hugOverlay.style.display = 'none';
+
+            // Auto scroll to Contract section
+            const contract = document.querySelector('.contract-container');
+            if (contract) {
+                contract.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }, 3000);
     });
 
