@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Forever Promise 🤞❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Intro Overlay -->
+    <div id="overlay">
+        <div class="overlay-content">
+            <h1>Promise Day Special</h1>
+            <p>For My Dearest Ishu ❤️</p>
+            <div class="pulse-icon">🤞</div>
+            <button id="enterBtn">Make a Promise</button>
+        </div>
+    </div>
+
+    <!-- Background Elements -->
+    <div class="stars"></div>
+    <div class="stars2"></div>
+
+    <!-- Music Control -->
+    <div class="music-control">
+        <button id="musicBtn" class="floating-btn">🎵 Play Music</button>
+        <audio id="bgMusic" loop>
+            <source src="song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container hidden-content" id="mainContainer">
+
+        <header>
+            <h1 class="main-title">My 7 Promises to You 🤞</h1>
+            <p class="subtitle">To my Bandriya, Jannu & Wifu</p>
+        </header>
+
+        <!-- Hand Container (Abstract Representation) -->
+        <div class="hand-container">
+            <div class="hand-art">
+                <div class="pinky-left"></div>
+                <div class="pinky-right"></div>
+                <div class="glow"></div>
+            </div>
+        </div>
+
+        <!-- Promise Cards Slider -->
+        <div class="card-slider" id="cardSlider">
+            <div class="card active">
+                <div class="card-icon">👑</div>
+                <h3>My Home Minister</h3>
+                <p>"I promise to always listen to your 'orders' (and maybe complain a little, but still do them!). You
+                    rule my heart."</p>
+            </div>
+            <!-- More cards will be injected via JS -->
+        </div>
+
+        <div class="controls">
+            <button id="prevBtn" class="nav-btn">❮</button>
+            <button id="nextBtn" class="nav-btn">❯</button>
+        </div>
+
+        <button id="sealBtn" class="seal-btn">🔒 Seal This Promise Forever</button>
+
+        <div id="finalMessage" class="hidden">
+            <h2>Promise Sealed! 💖</h2>
+            <p>I am always with you.</p>
+            <p>Happy Promise Day, Baby!</p>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
