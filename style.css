@@ -320,6 +320,15 @@ body {
     font-style: italic;
 }
 
+.card-number {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+
 /* Controls */
 .controls {
     display: flex;
@@ -344,26 +353,115 @@ body {
     color: #000;
 }
 
-/* Seal Button */
-.seal-btn {
-    background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
-    color: #444;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 30px;
-    font-weight: bold;
-    font-size: 1.1rem;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(255, 154, 158, 0.4);
-    transition: transform 0.2s;
-    font-family: 'Montserrat', sans-serif;
-    text-transform: uppercase;
+/* Fingerprint Scanner */
+.scanner-container {
+    text-align: center;
+    margin-top: 10px;
+    position: relative;
+    z-index: 20;
 }
 
-.seal-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 154, 158, 0.6);
+.scan-instruction {
+    font-size: 0.9rem;
+    color: #ffab91;
+    margin-bottom: 10px;
+    opacity: 0.8;
 }
+
+.fingerprint {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 171, 145, 0.5);
+    border-radius: 50%;
+    margin: 0 auto;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+
+.fingerprint:active {
+    transform: scale(0.95);
+    border-color: #ffab91;
+    background: rgba(255, 171, 145, 0.1);
+}
+
+.fingerprint-pattern {
+    width: 100%;
+    height: 100%;
+    background-image: repeating-radial-gradient(circle,
+            #ffab91,
+            #ffab91 2px,
+            transparent 3px,
+            transparent 6px);
+    opacity: 0.5;
+    mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="20" y="20" width="60" height="60" rx="30" ry="30" fill="black"/></svg>');
+    /* Simple mask */
+    /* Let's use a simpler visual for fingerprint without external SVG for reliability */
+    background: none;
+    border: 2px dashed #ffab91;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+
+.scan-beam {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #00e676;
+    /* Green scan light */
+    box-shadow: 0 0 10px #00e676;
+    opacity: 0;
+    animation: none;
+}
+
+.fingerprint.scanning .scan-beam {
+    opacity: 1;
+    animation: scanMove 1s linear infinite;
+}
+
+.fingerprint.scanning {
+    border-color: #00e676;
+    box-shadow: 0 0 20px rgba(0, 230, 118, 0.4);
+}
+
+@keyframes scanMove {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 100%;
+    }
+}
+
+.scan-status {
+    margin-top: 10px;
+    color: #aaa;
+    font-size: 0.8rem;
+    min-height: 1.2em;
+}
+
 
 /* Final Message */
 #finalMessage {

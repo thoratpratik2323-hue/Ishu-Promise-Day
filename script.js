@@ -129,38 +129,106 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
 
-    // --- Seal Button ---
-    document.getElementById('sealBtn').addEventListener('click', () => {
-        // Create Golden Sparkles
-        for (let i = 0; i < 50; i++) {
+    // --- Fingerprint Scanner Logic ---
+    const scanner = document.getElementById('fingerprintBtn');
+    const statusText = document.getElementById('scanStatus');
+    const scanBeam = document.querySelector('.scan-beam');
+    let scanTimer;
+    let isScanned = false;
+
+    function startScan(e) {
+        if (isScanned) return;
+        e.preventDefault(); // Prevent text selection or scrolling
+
+        scanner.classList.add('scanning');
+        scanBeam.style.animation = 'scanMove 1s linear infinite';
+        statusText.textContent = "Scanning Biometrics... Hold Still...";
+        statusText.style.color = "#00e676";
+
+        // Hold for 2 seconds to verify
+        scanTimer = setTimeout(() => {
+            completeScan();
+        }, 2000);
+    }
+
+    function stopScan() {
+        if (isScanned) return;
+
+        clearTimeout(scanTimer);
+        scanner.classList.remove('scanning');
+        scanBeam.style.animation = 'none';
+
+        statusText.textContent = "Scan Failed. Keep holding to verify.";
+        statusText.style.color = "#ff5252";
+
+        setTimeout(() => {
+            if (!isScanned) {
+                statusText.textContent = "Waiting for finger...";
+                statusText.style.color = "#aaa";
+            }
+        }, 1500);
+    }
+
+    function completeScan() {
+        isScanned = true;
+        scanner.classList.remove('scanning');
+        scanner.style.borderColor = "#00e676";
+        scanner.style.boxShadow = "0 0 30px #00e676";
+        statusText.textContent = "Access Granted. Promise Sealed.";
+
+        // Trigger Celebration
+        for (let i = 0; i < 60; i++) {
             createSparkle();
         }
 
-        // Show Final Message with delay
         setTimeout(() => {
             const finalMsg = document.getElementById('finalMessage');
             finalMsg.classList.remove('hidden');
             finalMsg.style.animation = 'scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-        }, 500);
-    });
+        }, 800);
+    }
+
+    // Mouse Events
+    scanner.addEventListener('mousedown', startScan);
+    scanner.addEventListener('mouseup', stopScan);
+    scanner.addEventListener('mouseleave', stopScan);
+
+    // Touch Events (for Mobile)
+    scanner.addEventListener('touchstart', startScan);
+    scanner.addEventListener('touchend', stopScan);
 
     function createSparkle() {
         const sparkle = document.createElement('div');
-        sparkle.innerHTML = '✨';
+        sparkle.innerHTML = ['✨', '🔒', '💖', '⭐'][Math.floor(Math.random() * 4)];
         sparkle.style.position = 'fixed';
         sparkle.style.left = Math.random() * window.innerWidth + 'px';
         sparkle.style.top = Math.random() * window.innerHeight + 'px';
         sparkle.style.fontSize = (Math.random() * 20 + 10) + 'px';
-        sparkle.style.color = '#ffd700';
+        sparkle.style.color = '#ffd700'; // Gold
         sparkle.style.pointerEvents = 'none';
         sparkle.style.zIndex = '1000';
-        sparkle.style.animation = 'floatUp 2s linear forwards';
+        sparkle.style.textShadow = '0 0 10px #fff';
+
+        // Random float up animation
+        const duration = Math.random() * 2 + 1;
+        sparkle.style.transition = `all ${duration}s ease-out`;
+        sparkle.style.opacity = '0';
+        sparkle.style.transform = `translateY(-100px) scale(0)`;
 
         document.body.appendChild(sparkle);
 
+        // Trigger animation in next frame
+        requestAnimationFrame(() => {
+            sparkle.style.opacity = '1';
+            sparkle.style.transform = `translateY(-${Math.random() * 200 + 50}px) scale(1.5)`;
+            setTimeout(() => {
+                sparkle.style.opacity = '0';
+            }, duration * 1000 - 500);
+        });
+
         setTimeout(() => {
             sparkle.remove();
-        }, 2000);
+        }, duration * 1000);
     }
 
     // Music Button Logic
