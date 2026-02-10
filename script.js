@@ -251,27 +251,29 @@ document.addEventListener('DOMContentLoaded', () => {
     const hugBtn = document.getElementById('hugBtn');
     const hugOverlay = document.getElementById('hugOverlay');
 
+    function hideHug() {
+        hugOverlay.style.display = 'none';
+        hugOverlay.classList.add('hidden');
+        // Auto scroll to Contract section
+        const contract = document.querySelector('.contract-container');
+        if (contract) {
+            contract.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+    }
+
     hugBtn.addEventListener('click', () => {
-        // Show Overlay
         hugOverlay.classList.remove('hidden');
         hugOverlay.style.display = 'flex';
 
-        // Vibrate Phone (if supported)
         if (navigator.vibrate) {
-            navigator.vibrate([200, 100, 200, 100, 500]); // Pattern: Buzz-pause-buzz-pause-longbuzz
+            navigator.vibrate([200, 100, 200, 100, 500]);
         }
 
-        // Hide after 3 seconds & scroll to contract
-        setTimeout(() => {
-            hugOverlay.classList.add('hidden');
-            hugOverlay.style.display = 'none';
-
-            // Auto scroll to Contract section
-            const contract = document.querySelector('.contract-container');
-            if (contract) {
-                contract.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
-        }, 3000);
+        // Auto-hide after 3 seconds
+        setTimeout(hideHug, 3000);
     });
+
+    // Click anywhere on overlay to close it
+    hugOverlay.addEventListener('click', hideHug);
 
 });
