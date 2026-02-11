@@ -4,113 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Forever Promise 🤞❤️</title>
-    <link rel="stylesheet" href="style.css?v=5">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500;700&display=swap"
+    <title>My Promsie to Ishu ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Playfair+Display&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-
-    <!-- Intro Overlay -->
-    <div id="overlay">
-        <div class="overlay-content">
-            <h1>Promise Day Special</h1>
-            <p>For My Dearest Ishu ❤️</p>
-            <div class="pulse-icon">🤞</div>
-            <button id="enterBtn">Make a Promise</button>
-        </div>
+    <div class="video-bg">
+        <!-- Using a loopable romantic video background -->
+        <video autoplay muted loop id="myVideo">
+            <source src="bg_promise.mp4" type="video/mp4">
+        </video>
+        <div class="overlay"></div>
     </div>
 
-    <!-- Background Elements -->
-    <div class="stars"></div>
-    <div class="stars2"></div>
-
-    <!-- Music Control -->
-    <div class="music-control">
-        <button id="musicBtn" class="floating-btn">🎵 Play Music</button>
-        <audio id="bgMusic" loop autoplay>
-            <source src="song.webm" type="audio/webm">
-            Your browser does not support the audio element.
-        </audio>
+    <!-- START SCREEN -->
+    <div id="start-screen">
+        <h1 class="glow-text">Happy Promise Day Baby</h1>
+        <p class="subtitle">I have 7 Promises for you...</p>
+        <button class="btn-start" onclick="startPromises()">Let's Begin ❤️</button>
     </div>
 
-    <!-- Main Content -->
-    <div class="container hidden-content" id="mainContainer">
-
-        <header>
-            <h1 class="main-title">My 7 Promises to You 🤞</h1>
-            <p class="subtitle">To my Bandriya, Jannu & Wifu</p>
-        </header>
-
-        <!-- Hand Container (Abstract Representation) -->
-        <div class="hand-container">
-            <div class="hand-art">
-                <div class="pinky-left"></div>
-                <div class="pinky-right"></div>
-                <div class="glow"></div>
-            </div>
+    <!-- PROMISE CARDS -->
+    <div id="promise-container" class="hidden">
+        <div class="card-stack">
+            <!-- Promises will be injected by JS -->
         </div>
-
-        <!-- Promise Cards Slider -->
-        <div class="card-slider" id="cardSlider">
-            <div class="card active">
-                <div class="card-icon">👑</div>
-                <h3>My Home Minister</h3>
-                <p>"I promise to always listen to your 'orders' (and maybe complain a little, but still do them!). You
-                    rule my heart."</p>
-            </div>
-            <!-- More cards will be injected via JS -->
-        </div>
-
-        <div class="controls">
-            <button id="prevBtn" class="nav-btn">❮</button>
-            <button id="nextBtn" class="nav-btn">❯</button>
-        </div>
-
-        <!-- Love Contract Section -->
-        <div class="contract-container">
-            <div class="contract-paper">
-                <h2>📜 Love Agreement 📜</h2>
-                <ul class="contract-list">
-                    <li>1. I promise to always pick up your video calls (or call back ASAP!). 📞</li>
-                    <li>2. I promise to never let us go to sleep angry. 😴❌</li>
-                    <li>3. I promise to share all my secrets (and gossip) with you. 🤫</li>
-                    <li>4. I promise to love you even when you are hangry. 🍔</li>
-                    <li>5. I promise that You are my Priority #1. Always. 🏆</li>
-                </ul>
-                <p class="contract-footer">By scanning below, I officially sign this contract forever.</p>
-            </div>
-        </div>
-
-        <!-- Fingerprint Scanner Section -->
-        <div class="scanner-container">
-            <p class="scan-instruction">Long Press to Sign & Seal Promise 🔒</p>
-            <div class="fingerprint" id="fingerprintBtn">
-                <div class="fingerprint-pattern"></div>
-                <div class="scan-beam"></div>
-            </div>
-            <p class="scan-status" id="scanStatus">Waiting for finger to sign...</p>
-        </div>
-
-        <div id="finalMessage" class="hidden">
-            <h2>Contract Signed! ✍️💖</h2>
-            <p>Official Partners: Ishu & Pratik</p>
-            <p>Status: Locked for Eternity 🔒</p>
-            <p>Happy Promise Day, Baby!</p>
-        </div>
-
+        <p class="hint">Tap card to reveal next promise ✨</p>
     </div>
 
-    <!-- Virtual Hug Button -->
-    <button id="hugBtn" class="floating-hug">🤗 Send Hug</button>
-    <div id="hugOverlay" class="hidden">
-        <div class="hug-emoji">🤗</div>
-        <p>Sending Warm Hug...</p>
+    <!-- FINAL SCREEN -->
+    <div id="final-screen" class="hidden">
+        <h1>For Eternity & Beyond</h1>
+        <div class="signature">
+            <svg width="300" height="100">
+                <path id="sig-path" d="M10,80 Q50,10 90,80 T180,80 T280,80" stroke="white" fill="transparent"
+                    stroke-width="3" />
+                <text x="50" y="60" fill="white" font-family="'Dancing Script', cursive" font-size="40">Yours, Pratik
+                    ❤️</text>
+            </svg>
+        </div>
+        <p>"I promise to love you even on your bad days."</p>
+        <button class="btn-start" onclick="location.reload()">Replay 🔄</button>
     </div>
 
-    <script src="script.js?v=5"></script>
+    <audio id="bgm" src="promise_song.mp3" loop></audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
